@@ -3,15 +3,14 @@
 - "Get stories" functions > separate file
 - Page Loading
 - Favorites
-- Header 
+- Header Improvements
     - make buttons work
     - highlight button for current page
-- Footer
-- Navigation pane
-- Update colors/make components "prettier"
-- move inline css > .css files
-- Pagination 
-- State management tool
-- Update for other story types (top stories/best stories)
 - check accessibility
-- set up GitHub pages
+    - set up GitHub pages first?
+- Footer
+- Update colors/components?
+- move more inline css > .css files?
+- Pagination 
+- Update for other story types (top stories/best stories)
+- State management?

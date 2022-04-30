@@ -6,9 +6,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 
 
-const pages = ["New Stories", "Top Stories", "Best Stories"];
-
 const NavBar = () => {
+
+  const pages = ["New Stories", "Top Stories", "Best Stories"];
 
   const handleClick = () => {
     //do something

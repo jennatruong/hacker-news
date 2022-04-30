@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import axios from "axios";
 import Stack from "@mui/material/Stack";
-import Item  from "../styles/ItemStyles"
-import BoxStyles from "../styles/BoxStyles"
-import NavBar from "../components/NavBar/NavBar"
+import Item  from "../../styles/ItemStyles"
+import BoxStyles from "../../styles/BoxStyles"
+import NavBar from "../NavBar/NavBar"
+import {getStories} from "../../tools/GetStories"
 import './HomePage.css';
 
 
@@ -14,24 +14,13 @@ const HomePage = () => {
   const [stories, setStories] = useState(Array());
   const [pageLoaded, setPageLoaded] = useState(false);
 
-  const baseURL = "https://hacker-news.firebaseio.com/v0"
-
+  //Retrieve stories, set pageLoaded to true
   useEffect(() => {
-    getStories();
+    getStories().then((stories) => {
+      setStories(stories)
+      setPageLoaded(true)
+    })
   }, []);
-
-  const getStories = async () => {
-    const response = await axios.get(`${baseURL}/newstories.json`);
-    const ids = response.data.slice(0, 100);
-    const getStories = ids.map((id: Number) => getStory2(id));
-    setStories(await Promise.all(getStories));
-    setPageLoaded(true);
-  };
-
-  const getStory2 = async (id: Number) => {
-    const response = await axios.get(`${baseURL}/item/${id}.json`);
-    return response.data;
-  };
 
   return (
     <React.Fragment>
