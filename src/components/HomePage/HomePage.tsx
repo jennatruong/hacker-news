@@ -14,7 +14,7 @@ const HomePage = () => {
   const [stories, setStories] = useState(Array());
   const [pageLoaded, setPageLoaded] = useState(false);
 
-  //Retrieve stories, set pageLoaded to true
+  //Retrieve stories, then set page loaded to true
   useEffect(() => {
     getStories().then((stories) => {
       setStories(stories)

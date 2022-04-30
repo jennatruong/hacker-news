@@ -1,6 +1,7 @@
 
 import { styled } from "@mui/material/styles";
 
+//try out importing styled component
 const BoxStyle = styled('div')({
     backgroundColor: "#F8F8FF",
     padding: 2,
