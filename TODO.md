@@ -13,4 +13,6 @@
 - move more inline css > .css files?
 - Pagination 
 - Update for other story types (top stories/best stories)
+- learn how to test UI better
 - State management?
+- Sometimes console is logging repeated "Fetch finished loading: GET URL"? - make this stop?
