@@ -8,7 +8,7 @@ const BoxStyle = styled('div')({
     textAlign: "left",
     height: "10vh",
     display: "flex",
-    alignItems: "left",
+    alignItems: "center",
     overflow: "hidden",
     borderRadius: "12px",
     fontWeight: "bold",
