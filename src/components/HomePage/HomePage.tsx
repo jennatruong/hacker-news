@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -7,29 +7,40 @@ import Item  from "../../styles/ItemStyles"
 import BoxStyles from "../../styles/BoxStyles"
 import NavBar from "../NavBar/NavBar"
 import {getStories} from "../../tools/GetStories"
+import CircularProgress from '@mui/material/CircularProgress';
+import AppContext from "../../context/AppContext";
+import { useGlobalState } from '../../state';
 import './HomePage.css';
 
 
 const HomePage = () => {
-  const [stories, setStories] = useState(Array());
-  const [pageLoaded, setPageLoaded] = useState(false);
+  // const { id, setId } = useContext(AppContext);
+  // const [stories, setStories] = useState(Array());
+  // const [pageLoaded, setPageLoaded] = useState(false);
+  const [stories, setStories] = useGlobalState("currentStories");
+  const [pageLoaded, setPageLoaded] = useGlobalState("loaded");
+  const [currentPage, setCurrentPage] = useGlobalState('currentPage')
 
   //Retrieve stories, then set page loaded to true
   useEffect(() => {
-    getStories().then((stories) => {
+    getStories(currentPage).then((stories) => {
       setStories(stories)
-      setPageLoaded(true)
+      setPageLoaded("true")
     })
   }, []);
 
   return (
     <React.Fragment>
       <CssBaseline />
-      {pageLoaded && (
+      {pageLoaded == "false" ? (
+       <div style={{display: "flex", alignContent: "center", justifyContent: "center", paddingTop: "250px" }}>
+        <CircularProgress/>
+       </div>
+      ) : (
         <div style={{ backgroundColor: '#E8E8E8'}}>
         <NavBar/>
         <Container maxWidth="md" style={{paddingTop: "70px"}}>
-        
+        Current Page: {currentPage}
           {stories.map(({ id, title, url, score }) => (
             <BoxStyles sx={{spacing: 8, m: 1}}>
               <Box
